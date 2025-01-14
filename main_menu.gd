@@ -4,6 +4,8 @@ var tick : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_tree().paused=false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	update_menu()
 	$MarginContainer/SplitContainer/Buttons/Play.grab_focus()
 
@@ -19,11 +21,13 @@ func _on_prev_dino_button_down() -> void:
 	Global.selected_character -= 1
 	Global.selected_character = wrap(Global.selected_character, 0, Global.characters.size())
 	update_menu()
+	$ClickButton.play()
 	
 func _on_next_dino_button_down() -> void:
 	Global.selected_character += 1
 	Global.selected_character = wrap(Global.selected_character, 0, Global.characters.size())
 	update_menu()
+	$ClickButton.play()
 	
 func update_menu():
 	$MarginContainer/DinoSprite.texture = Global.characters.values()[Global.selected_character].sprite_sheet

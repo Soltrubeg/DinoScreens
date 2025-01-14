@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8kmfiepx388w"]
+[gd_scene load_steps=17 format=3 uid="uid://c8kmfiepx388w"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_tc57q"]
 [ext_resource type="Texture2D" uid="uid://dl0l26thppmqo" path="res://Background/mainmenu.png" id="2_1p6d6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d0d47nvl4yqu4" path="res://Buttons/Previous.png" id="4_iml8g"]
 [ext_resource type="FontFile" uid="uid://u0knu7w4xfno" path="res://Fonts/m6x11plus.ttf" id="4_ir4r1"]
 [ext_resource type="Texture2D" uid="uid://du0eo706wukpg" path="res://Buttons/Next.png" id="5_bs53s"]
+[ext_resource type="AudioStream" uid="uid://don78gjrmxma7" path="res://Player/Sounds/click.wav" id="8_k5wgu"]
 
 [sub_resource type="Animation" id="Animation_bylen"]
 length = 0.001
@@ -196,7 +197,7 @@ libraries = {
 }
 autoplay = "walking"
 
-[node name="SplitContainer" type="SplitContainer" parent="MarginContainer"]
+[node name="SplitContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 273
 
@@ -207,18 +208,21 @@ alignment = 1
 
 [node name="Play" type="Button" parent="MarginContainer/SplitContainer/Buttons"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("4_0tepo")
 theme_override_font_sizes/font_size = 32
 text = "Play"
 
 [node name="Highscores" type="Button" parent="MarginContainer/SplitContainer/Buttons"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("4_0tepo")
 theme_override_font_sizes/font_size = 32
 text = "Highscores"
 
 [node name="Exit" type="Button" parent="MarginContainer/SplitContainer/Buttons"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("4_0tepo")
 theme_override_font_sizes/font_size = 32
 text = "Exit"
@@ -233,6 +237,7 @@ alignment = 1
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 8
+mouse_default_cursor_shape = 2
 icon = ExtResource("4_iml8g")
 icon_alignment = 1
 expand_icon = true
@@ -241,9 +246,13 @@ expand_icon = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 8
+mouse_default_cursor_shape = 2
 icon = ExtResource("5_bs53s")
 icon_alignment = 1
 expand_icon = true
+
+[node name="ClickButton" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_k5wgu")
 
 [connection signal="button_down" from="MarginContainer/SplitContainer/Buttons/Play" to="." method="_on_play_button_down"]
 [connection signal="button_down" from="MarginContainer/SplitContainer/Buttons/Exit" to="." method="_on_exit_button_down"]

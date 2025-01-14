@@ -1,9 +1,23 @@
-[gd_scene load_steps=5 format=4 uid="uid://cohkjnwwo4sfy"]
+[gd_scene load_steps=6 format=4 uid="uid://cohkjnwwo4sfy"]
 
 [ext_resource type="PackedScene" uid="uid://d1ebdc6x8i1rq" path="res://tilemap.tscn" id="1_yf3a5"]
 [ext_resource type="PackedScene" uid="uid://dfcabj2n75wn8" path="res://Scenes/door.tscn" id="3_g3be2"]
 [ext_resource type="PackedScene" uid="uid://bnf6kg0bpeqfr" path="res://Game/Decoration/SignArrow/SignArrow.tscn" id="3_x62pg"]
 [ext_resource type="PackedScene" uid="uid://2uxcs7wnaxlv" path="res://Scenes/wall.tscn" id="4_p5wgq"]
+
+[sub_resource type="GDScript" id="GDScript_ouwwc"]
+script/source = "extends StaticBody2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$Area2D.add_to_group(\"Door\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="Start Screen" type="Node2D"]
 
@@ -14,5 +28,6 @@ tile_map_data = PackedByteArray("AAASAAoAAAABAAEAAAARAAoAAAABAAEAAAAQAAoAAAABAAE
 position = Vector2(500, 256)
 
 [node name="Door" parent="." instance=ExtResource("3_g3be2")]
+script = SubResource("GDScript_ouwwc")
 
 [node name="Wall" parent="." instance=ExtResource("4_p5wgq")]

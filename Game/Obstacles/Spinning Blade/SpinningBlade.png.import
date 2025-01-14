@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw03tnc5h3wax"
-path="res://.godot/imported/cursor.png-9207886fa5a62b74129e260ee150454e.ctex"
+uid="uid://b1uqki2a2a1bt"
+path="res://.godot/imported/SpinningBlade.png-6ef705d06030c0428a91e2617ee5302c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cursor.png"
-dest_files=["res://.godot/imported/cursor.png-9207886fa5a62b74129e260ee150454e.ctex"]
+source_file="res://Game/Obstacles/Spinning Blade/SpinningBlade.png"
+dest_files=["res://.godot/imported/SpinningBlade.png-6ef705d06030c0428a91e2617ee5302c.ctex"]
 
 [params]
 

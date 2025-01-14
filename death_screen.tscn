@@ -1,0 +1,168 @@
+[gd_scene load_steps=12 format=3 uid="uid://chb0cdc1ckdm6"]
+
+[ext_resource type="Script" path="res://death_screen.gd" id="1_85pp7"]
+[ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="1_gnpb3"]
+[ext_resource type="Texture2D" uid="uid://dgmoy5j6qw5n1" path="res://Background/deathscreen.png" id="1_iwxov"]
+[ext_resource type="FontFile" uid="uid://u0knu7w4xfno" path="res://Fonts/m6x11plus.ttf" id="2_uix61"]
+[ext_resource type="FontFile" uid="uid://dnd0r4utl4q8i" path="res://Fonts/m5x7.ttf" id="5_rsn04"]
+[ext_resource type="Texture2D" uid="uid://cv33dkn6bhf02" path="res://Buttons/Redo.png" id="6_t4vxq"]
+[ext_resource type="Texture2D" uid="uid://dqc55tqe7yekv" path="res://Buttons/Home.png" id="7_j3g32"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8lmqw"]
+shader = ExtResource("1_gnpb3")
+shader_parameter/blur_amount = 2.419
+shader_parameter/mix_amount = null
+shader_parameter/color_over = null
+
+[sub_resource type="Animation" id="Animation_dk2jd"]
+resource_name = "fade_in"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4r1it"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2vcwy"]
+_data = {
+"RESET": SubResource("Animation_4r1it"),
+"fade_in": SubResource("Animation_dk2jd")
+}
+
+[node name="DeathScreen" type="CanvasLayer"]
+process_mode = 3
+layer = 99
+script = ExtResource("1_85pp7")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(320, 180)
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_8lmqw")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 20
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_iwxov")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 40
+
+[node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_uix61")
+theme_override_font_sizes/font_size = 72
+text = "GAME OVER!"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Score" type="RichTextLabel" parent="Control/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_rsn04")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Time" type="RichTextLabel" parent="Control/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_rsn04")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Restart" type="Button" parent="Control/MarginContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+icon = ExtResource("6_t4vxq")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Menu" type="Button" parent="Control/MarginContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+icon = ExtResource("7_j3g32")
+icon_alignment = 1
+expand_icon = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_2vcwy")
+}
+autoplay = "fade_in"
+
+[connection signal="button_down" from="Control/MarginContainer/MarginContainer/HBoxContainer/Restart" to="." method="_on_restart_button_down"]
+[connection signal="button_down" from="Control/MarginContainer/MarginContainer/HBoxContainer/Menu" to="." method="_on_menu_button_down"]

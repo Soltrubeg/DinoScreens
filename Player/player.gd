@@ -48,6 +48,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("movement_left", "movement_right")
 	var looking_direction:= Input.get_axis("look_left","look_right")
+	var crouching := Input.get_action_strength("movement_crouch")
 	if direction:
 		velocity.x = direction * character.movement_speed
 	else:
@@ -90,19 +91,24 @@ func on_hurt():
 		$Sprite2D/AnimationPlayer.play("hurt")
 	
 func on_death():
+	queue_free()
 	emit_signal("death")
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if(area.is_in_group("Door")):
-		area.queue_free()
-		emit_signal("pass_through_door")
-		$AudioStreamPlayer.stream = load("res://Player/Sounds/walk.wav")
-		$AudioStreamPlayer.volume_db = 12
-		$AudioStreamPlayer.play()
+	match(area.get_groups()[0]):
+		"Door":
+			area.queue_free()
+			emit_signal("pass_through_door")
+			$AudioStreamPlayer.stream = load("res://Player/Sounds/walk.wav")
+			$AudioStreamPlayer.volume_db = 12
+			$AudioStreamPlayer.play()
+			
+			set_physics_process(false)
+			await get_tree().create_timer(0.1).timeout
+			set_physics_process(true)
 		
-		set_physics_process(false)
-		await get_tree().create_timer(0.1).timeout
-		set_physics_process(true)
+		"Enemy":
+			on_hurt()
 	
 
 

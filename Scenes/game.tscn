@@ -9,8 +9,6 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_pqx3y")
 
-[node name="Node" type="Node" parent="."]
-
 [node name="HUD" parent="." instance=ExtResource("3_iixto")]
 
 [node name="Background" parent="HUD" instance=ExtResource("4_x7b7q")]
@@ -24,4 +22,5 @@ position = Vector2(320, 270)
 anchor_mode = 0
 position_smoothing_enabled = true
 
+[connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="pass_through_door" from="Player" to="." method="_on_player_pass_through_door"]
