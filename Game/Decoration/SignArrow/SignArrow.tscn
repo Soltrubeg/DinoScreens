@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnf6kg0bpeqfr"]
+
+[ext_resource type="Texture2D" uid="uid://dgt3j57t6ekq7" path="res://Game/Decoration/SignArrow/sign_arrow.png" id="1_005u8"]
+
+[node name="SignArrow" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_005u8")

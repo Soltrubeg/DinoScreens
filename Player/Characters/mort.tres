@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=4 format=3 uid="uid://rt243145pcav"]
+
+[ext_resource type="Texture2D" uid="uid://chprio8rrjj5n" path="res://Player/Sprites/mort_hp.png" id="1_e5l8t"]
+[ext_resource type="Script" path="res://Player/character.gd" id="2_ebyxv"]
+[ext_resource type="Texture2D" uid="uid://crcqg8rexwy63" path="res://Player/Sprites/mort.png" id="2_p5cyc"]
+
+[resource]
+script = ExtResource("2_ebyxv")
+sprite_sheet = ExtResource("2_p5cyc")
+hp_sprite = ExtResource("1_e5l8t")
+movement_speed = 220.0
+jump_strength = 440
+lives = 3

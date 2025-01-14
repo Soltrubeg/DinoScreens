@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://i07ysv5w1dlv"]
+
+[ext_resource type="Script" path="res://Scenes/game.gd" id="1_pqx3y"]
+[ext_resource type="PackedScene" uid="uid://dcukeqrcamu0o" path="res://Player/player.tscn" id="2_wwefe"]
+[ext_resource type="PackedScene" uid="uid://etgrr5ov6tad" path="res://HUD/hud.tscn" id="3_iixto"]
+[ext_resource type="PackedScene" uid="uid://cohkjnwwo4sfy" path="res://Screens/StartScreen.tscn" id="4_mw2gt"]
+[ext_resource type="PackedScene" uid="uid://by5ybyrvhox7r" path="res://Background/background.tscn" id="4_x7b7q"]
+[ext_resource type="PackedScene" uid="uid://b2diulk0x4qpr" path="res://Screens/Screen1.tscn" id="5_qnsg5"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_pqx3y")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("3_iixto")]
+
+[node name="Start Screen" parent="." instance=ExtResource("4_mw2gt")]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("4_x7b7q")]
+
+[node name="Screen1" parent="." instance=ExtResource("5_qnsg5")]
+position = Vector2(320, 64)
+
+[node name="Player" parent="." instance=ExtResource("2_wwefe")]
+position = Vector2(140, 151)
+
+[connection signal="pass_through_door" from="Player" to="." method="_on_player_pass_through_door"]

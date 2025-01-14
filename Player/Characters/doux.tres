@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=4 format=3 uid="uid://d20ng05pf8rpv"]
+
+[ext_resource type="Texture2D" uid="uid://crshel1k2e0cq" path="res://Player/Sprites/doux_hp.png" id="1_ogv0r"]
+[ext_resource type="Script" path="res://Player/character.gd" id="2_gnvvt"]
+[ext_resource type="Texture2D" uid="uid://0yh7w8bf10ef" path="res://Player/Sprites/doux.png" id="2_uc2nm"]
+
+[resource]
+script = ExtResource("2_gnvvt")
+sprite_sheet = ExtResource("2_uc2nm")
+hp_sprite = ExtResource("1_ogv0r")
+movement_speed = 250.0
+jump_strength = 400
+lives = 3

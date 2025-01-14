@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=4 format=3 uid="uid://cnoc81e56h21r"]
+
+[ext_resource type="Texture2D" uid="uid://cnsprgsnf0lb0" path="res://Player/Sprites/vita_hp.png" id="1_w6eac"]
+[ext_resource type="Script" path="res://Player/character.gd" id="2_i7g4x"]
+[ext_resource type="Texture2D" uid="uid://djulfbfq571s8" path="res://Player/Sprites/vita.png" id="2_ii2tr"]
+
+[resource]
+script = ExtResource("2_i7g4x")
+sprite_sheet = ExtResource("2_ii2tr")
+hp_sprite = ExtResource("1_w6eac")
+movement_speed = 200.0
+jump_strength = 500
+lives = 3

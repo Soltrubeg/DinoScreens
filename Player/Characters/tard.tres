@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=4 format=3 uid="uid://cj54pcb637od2"]
+
+[ext_resource type="Texture2D" uid="uid://cry4g4ettrnto" path="res://Player/Sprites/tard_hp.png" id="1_3jbqt"]
+[ext_resource type="Script" path="res://Player/character.gd" id="2_djg27"]
+[ext_resource type="Texture2D" uid="uid://cw2popku2jxmj" path="res://Player/Sprites/tard.png" id="2_x6mh0"]
+
+[resource]
+script = ExtResource("2_djg27")
+sprite_sheet = ExtResource("2_x6mh0")
+hp_sprite = ExtResource("1_3jbqt")
+movement_speed = 200.0
+jump_strength = 400
+lives = 4

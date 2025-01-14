@@ -1,0 +1,251 @@
+[gd_scene load_steps=16 format=3 uid="uid://c8kmfiepx388w"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_tc57q"]
+[ext_resource type="Texture2D" uid="uid://dl0l26thppmqo" path="res://Background/mainmenu.png" id="2_1p6d6"]
+[ext_resource type="Texture2D" uid="uid://crcqg8rexwy63" path="res://Player/Sprites/mort.png" id="3_4hry8"]
+[ext_resource type="FontFile" uid="uid://dnd0r4utl4q8i" path="res://Fonts/m5x7.ttf" id="4_0tepo"]
+[ext_resource type="Texture2D" uid="uid://d0d47nvl4yqu4" path="res://Buttons/Previous.png" id="4_iml8g"]
+[ext_resource type="FontFile" uid="uid://u0knu7w4xfno" path="res://Fonts/m6x11plus.ttf" id="4_ir4r1"]
+[ext_resource type="Texture2D" uid="uid://du0eo706wukpg" path="res://Buttons/Next.png" id="5_bs53s"]
+
+[sub_resource type="Animation" id="Animation_bylen"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1r6kh"]
+resource_name = "crouch"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+
+[sub_resource type="Animation" id="Animation_qols6"]
+resource_name = "crouch_walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 21, 22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_4ghx5"]
+resource_name = "hurt"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 15, 16, 15, 16, 15, 16]
+}
+
+[sub_resource type="Animation" id="Animation_4roqh"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_17uko"]
+resource_name = "jump"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_236n5"]
+resource_name = "walking"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ubbnw"]
+_data = {
+"RESET": SubResource("Animation_bylen"),
+"crouch": SubResource("Animation_1r6kh"),
+"crouch_walk": SubResource("Animation_qols6"),
+"hurt": SubResource("Animation_4ghx5"),
+"idle": SubResource("Animation_4roqh"),
+"jump": SubResource("Animation_17uko"),
+"walking": SubResource("Animation_236n5")
+}
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tc57q")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1p6d6")
+
+[node name="DinoName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65
+anchor_top = 0.234
+anchor_right = 0.7
+anchor_bottom = 0.234
+offset_left = -21.12
+offset_right = 8.88003
+offset_bottom = 18.0
+rotation = -0.392699
+pivot_offset = Vector2(31, 18)
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_ir4r1")
+theme_override_font_sizes/font_size = 36
+text = "Mort"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 30
+
+[node name="DinoSprite" type="Sprite2D" parent="MarginContainer"]
+position = Vector2(480, 190)
+scale = Vector2(8, 8)
+texture = ExtResource("3_4hry8")
+hframes = 24
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/DinoSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_ubbnw")
+}
+autoplay = "walking"
+
+[node name="SplitContainer" type="SplitContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 273
+
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/SplitContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Play" type="Button" parent="MarginContainer/SplitContainer/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0tepo")
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="Highscores" type="Button" parent="MarginContainer/SplitContainer/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0tepo")
+theme_override_font_sizes/font_size = 32
+text = "Highscores"
+
+[node name="Exit" type="Button" parent="MarginContainer/SplitContainer/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0tepo")
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/SplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+alignment = 1
+
+[node name="PrevDino" type="Button" parent="MarginContainer/SplitContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 8
+icon = ExtResource("4_iml8g")
+icon_alignment = 1
+expand_icon = true
+
+[node name="NextDino" type="Button" parent="MarginContainer/SplitContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 8
+icon = ExtResource("5_bs53s")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="button_down" from="MarginContainer/SplitContainer/Buttons/Play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="MarginContainer/SplitContainer/Buttons/Exit" to="." method="_on_exit_button_down"]
+[connection signal="button_down" from="MarginContainer/SplitContainer/HBoxContainer/PrevDino" to="." method="_on_prev_dino_button_down"]
+[connection signal="button_down" from="MarginContainer/SplitContainer/HBoxContainer/NextDino" to="." method="_on_next_dino_button_down"]

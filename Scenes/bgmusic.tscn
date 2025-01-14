@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgd1npm8nqd75"]
+
+[ext_resource type="AudioStream" uid="uid://bnavpym4i1svw" path="res://Ludum Dare 30 04.ogg" id="1_jct35"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_jct35")
+volume_db = -7.123
+autoplay = true
