@@ -13,18 +13,24 @@ func _ready() -> void:
 	
 	Global.current_room = get_node("Start Screen")
 	Global.room = 0
+	Global.room_y = 0
 	Global.start_time = -1
 	Global.lives_left = character.lives
 	
 func _on_player_pass_through_door() -> void:
+	print(Global.room_y)
 	Global.room += 1
 	if(Global.room==1): Global.start_time = Time.get_ticks_msec()
-	var next_room : PackedScene = rooms[randi() % rooms.size()]
+	var next_room : PackedScene = Global.rooms[randi() % Global.rooms.size()]
 	var instance : Node2D = next_room.instantiate()
 	instance.position.x = Global.room * 640
+	instance.position.y += Global.room_y
 	player.position.x = (Global.room * 640) + 20
 	Global.spawn_pos = player.position
 	camera.position.x += 640
+	camera.position.y += Global.camera_y
+	$HUD/Background.offset.y += Global.camera_y
+	Global.camera_y=0
 	add_child(instance)
 	var wall : StaticBody2D = preload("res://Scenes/wall.tscn").instantiate()
 	wall.position.x = -10

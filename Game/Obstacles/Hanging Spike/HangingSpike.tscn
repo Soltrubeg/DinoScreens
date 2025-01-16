@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://d01s2j3q6yuvc"]
+
+[node name="HangingSpike" type="CharacterBody2D"]

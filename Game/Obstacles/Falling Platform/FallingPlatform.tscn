@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://dchs4qfy2mxj"]
+
+[ext_resource type="Script" path="res://Game/Obstacles/Falling Platform/FallingPlatform.gd" id="1_oou5e"]
+[ext_resource type="Texture2D" uid="uid://d23uv82opylop" path="res://Game/Obstacles/Falling Platform/FallingPlatform.png" id="1_pm10c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t70su"]
+size = Vector2(14, 16)
+
+[sub_resource type="Animation" id="Animation_u4mr1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ag28r"]
+resource_name = "fall"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1, 0), Vector2(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ah6ng"]
+resource_name = "spawn"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_llor8"]
+_data = {
+"RESET": SubResource("Animation_u4mr1"),
+"fall": SubResource("Animation_ag28r"),
+"spawn": SubResource("Animation_ah6ng")
+}
+
+[node name="FallingPlatform" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_oou5e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pm10c")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_t70su")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t70su")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_llor8")
+}
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

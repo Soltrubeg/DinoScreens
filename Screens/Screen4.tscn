@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=4 uid="uid://doypxe6pw8m2w"]
+
+[ext_resource type="PackedScene" uid="uid://d1ebdc6x8i1rq" path="res://tilemap.tscn" id="1_fjfed"]
+[ext_resource type="PackedScene" uid="uid://dfcabj2n75wn8" path="res://Scenes/door.tscn" id="2_aie37"]
+[ext_resource type="PackedScene" uid="uid://cnqc62r11bmtg" path="res://Game/Obstacles/Spikes/Spikes.tscn" id="3_v6g2n"]
+[ext_resource type="PackedScene" uid="uid://dchs4qfy2mxj" path="res://Game/Obstacles/Falling Platform/FallingPlatform.tscn" id="4_0a66j"]
+
+[node name="Screen4" type="Node2D"]
+
+[node name="Ground" parent="." instance=ExtResource("1_fjfed")]
+tile_map_data = PackedByteArray("AAASAAoAAAABAAEAAAARAAoAAAABAAEAAAAQAAoAAAABAAEAAAAPAAoAAAABAAEAAAAOAAoAAAABAAEAAAANAAoAAAABAAEAAAAGAAoAAAABAAEAAAAFAAoAAAABAAEAAAAEAAoAAAABAAEAAAADAAoAAAABAAEAAAACAAoAAAABAAEAAAABAAoAAAABAAEAAAACAAsAAAABAAIAAAABAAsAAAABAAIAAAAAAAsAAAABAAIAAAAAAAoAAAABAAEAAAAAAAkAAAABAAAAAAABAAkAAAABAAAAAAACAAkAAAABAAAAAAADAAsAAAABAAIAAAADAAkAAAABAAAAAAAEAAsAAAABAAIAAAAEAAkAAAABAAAAAAAFAAsAAAABAAIAAAAFAAkAAAABAAAAAAAGAAsAAAABAAIAAAAGAAkAAAABAAAAAAANAAsAAAABAAIAAAANAAkAAAABAAAAAAAOAAsAAAABAAIAAAAOAAkAAAABAAAAAAAPAAsAAAABAAIAAAAPAAkAAAABAAAAAAAQAAsAAAABAAIAAAAQAAkAAAABAAAAAAARAAsAAAABAAIAAAARAAkAAAABAAAAAAASAAsAAAABAAIAAAASAAkAAAABAAAAAAATAAoAAAABAAEAAAATAAsAAAABAAIAAAATAAkAAAABAAAAAAA=")
+
+[node name="Door" parent="." instance=ExtResource("2_aie37")]
+
+[node name="Spikes" parent="." instance=ExtResource("3_v6g2n")]
+position = Vector2(240, 368)
+rotation = 3.14159
+
+[node name="Spikes6" parent="." instance=ExtResource("3_v6g2n")]
+position = Vector2(272, 368)
+rotation = 3.14159
+
+[node name="Spikes2" parent="." instance=ExtResource("3_v6g2n")]
+position = Vector2(304, 368)
+rotation = 3.14159
+
+[node name="Spikes3" parent="." instance=ExtResource("3_v6g2n")]
+position = Vector2(336, 368)
+rotation = 3.14159
+
+[node name="Spikes4" parent="." instance=ExtResource("3_v6g2n")]
+position = Vector2(368, 368)
+rotation = 3.14159
+
+[node name="Spikes5" parent="." instance=ExtResource("3_v6g2n")]
+position = Vector2(400, 368)
+rotation = 3.14159
+
+[node name="FallingPlatform" parent="." instance=ExtResource("4_0a66j")]
+position = Vector2(272, 304)
+
+[node name="FallingPlatform2" parent="." instance=ExtResource("4_0a66j")]
+position = Vector2(304, 304)
+
+[node name="FallingPlatform3" parent="." instance=ExtResource("4_0a66j")]
+position = Vector2(336, 304)
+
+[node name="FallingPlatform4" parent="." instance=ExtResource("4_0a66j")]
+position = Vector2(368, 304)
+
+[node name="FallingPlatform5" parent="." instance=ExtResource("4_0a66j")]
+position = Vector2(400, 304)
+
+[node name="FallingPlatform6" parent="." instance=ExtResource("4_0a66j")]
+position = Vector2(240, 304)

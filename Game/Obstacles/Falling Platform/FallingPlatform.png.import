@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blshidyq0gq"
-path="res://.godot/imported/heart.png-467151d325c9ed6a576f2b5e52394e07.ctex"
+uid="uid://d23uv82opylop"
+path="res://.godot/imported/FallingPlatform.png-6074ba156fe8ff80415242351f7b2eb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD/Hearts/heart.png"
-dest_files=["res://.godot/imported/heart.png-467151d325c9ed6a576f2b5e52394e07.ctex"]
+source_file="res://Game/Obstacles/Falling Platform/FallingPlatform.png"
+dest_files=["res://.godot/imported/FallingPlatform.png-6074ba156fe8ff80415242351f7b2eb1.ctex"]
 
 [params]
 

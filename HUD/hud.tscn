@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://etgrr5ov6tad"]
+[gd_scene load_steps=7 format=3 uid="uid://etgrr5ov6tad"]
 
 [ext_resource type="Script" path="res://HUD/hud.gd" id="1_26m72"]
 [ext_resource type="FontFile" uid="uid://dnd0r4utl4q8i" path="res://Fonts/m5x7.ttf" id="2_3ko2c"]
 [ext_resource type="FontFile" uid="uid://u0knu7w4xfno" path="res://Fonts/m6x11plus.ttf" id="3_hip8b"]
+[ext_resource type="Texture2D" uid="uid://chprio8rrjj5n" path="res://Player/Sprites/mort_hp.png" id="4_efov8"]
+[ext_resource type="Texture2D" uid="uid://bq0xqqeiwsuom" path="res://HUD/ability_empty.png" id="5_jn21r"]
+[ext_resource type="Texture2D" uid="uid://qdck6xmm3k38" path="res://HUD/ability.png" id="6_s8yia"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_26m72")
@@ -55,16 +58,21 @@ offset_bottom = 15.0
 scale = Vector2(2, 2)
 size_flags_horizontal = 0
 size_flags_vertical = 0
+texture = ExtResource("4_efov8")
 
 [node name="Lives" type="Label" parent="Control"]
 layout_mode = 2
 offset_left = 48.0
 offset_right = 49.0
 offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_3ko2c")
 theme_override_font_sizes/font_size = 32
+text = "3"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Time" type="Label" parent="Control"]
@@ -81,3 +89,21 @@ theme_override_font_sizes/font_size = 32
 text = "0:00.00"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="AbilityBar" type="TextureProgressBar" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.08
+anchor_bottom = 0.08
+offset_left = 2.0
+offset_top = -0.799999
+offset_right = 57.0
+offset_bottom = 4.2
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 2
+texture_under = ExtResource("5_jn21r")
+texture_progress = ExtResource("6_s8yia")

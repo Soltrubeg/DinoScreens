@@ -5,9 +5,11 @@ var start_time : int
 
 var current_room : Node2D
 var spawn_pos : Vector2
+var room_y : float
+var camera_y : float
 var lives_left : int
 
-var selected_character := 1
+var selected_character := 0
 
 var cursor = preload("res://Cursors/default.png")
 var cursor_hand = preload("res://Cursors/interactable.png")
@@ -23,6 +25,11 @@ var rooms = [
 	
 	preload("res://Screens/Screen1.tscn"),
 	preload("res://Screens/Screen2.tscn"),
+	preload("res://Screens/Screen3.tscn"),
+	preload("res://Screens/Screen4.tscn"),
+	preload("res://Screens/Screen5.tscn"),
+	preload("res://Screens/Screen6.tscn"),
+	preload("res://Screens/Screen7.tscn"),
 	
 ]
 

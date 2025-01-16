@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://chb0cdc1ckdm6"]
+[gd_scene load_steps=15 format=3 uid="uid://chb0cdc1ckdm6"]
 
 [ext_resource type="Script" path="res://death_screen.gd" id="1_85pp7"]
 [ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="1_gnpb3"]
@@ -6,13 +6,31 @@
 [ext_resource type="FontFile" uid="uid://u0knu7w4xfno" path="res://Fonts/m6x11plus.ttf" id="2_uix61"]
 [ext_resource type="FontFile" uid="uid://dnd0r4utl4q8i" path="res://Fonts/m5x7.ttf" id="5_rsn04"]
 [ext_resource type="Texture2D" uid="uid://cv33dkn6bhf02" path="res://Buttons/Redo.png" id="6_t4vxq"]
+[ext_resource type="StyleBox" uid="uid://cg4b0crqmciok" path="res://Buttons/button_hover.tres" id="6_tvayd"]
 [ext_resource type="Texture2D" uid="uid://dqc55tqe7yekv" path="res://Buttons/Home.png" id="7_j3g32"]
+[ext_resource type="StyleBox" uid="uid://2l746t3o4onl" path="res://Buttons/button.tres" id="7_jxgrr"]
+[ext_resource type="AudioStream" uid="uid://by22wbrr6uyeq" path="res://Player/Sounds/death.wav" id="8_rnsrj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8lmqw"]
 shader = ExtResource("1_gnpb3")
 shader_parameter/blur_amount = 2.419
 shader_parameter/mix_amount = null
 shader_parameter/color_over = null
+
+[sub_resource type="Animation" id="Animation_4r1it"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
 
 [sub_resource type="Animation" id="Animation_dk2jd"]
 resource_name = "fade_in"
@@ -28,21 +46,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_4r1it"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2vcwy"]
@@ -115,13 +118,19 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="Character" type="RichTextLabel" parent="Control/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_rsn04")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+
 [node name="Score" type="RichTextLabel" parent="Control/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("5_rsn04")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "
-"
 fit_content = true
 autowrap_mode = 0
 
@@ -130,8 +139,14 @@ layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("5_rsn04")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "
-"
+fit_content = true
+autowrap_mode = 0
+
+[node name="AvgTime" type="RichTextLabel" parent="Control/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_rsn04")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
 
@@ -142,17 +157,25 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="Restart" type="Button" parent="Control/MarginContainer/MarginContainer/HBoxContainer"]
+process_mode = 4
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 mouse_default_cursor_shape = 2
+theme_override_styles/focus = ExtResource("6_tvayd")
+theme_override_styles/hover = ExtResource("6_tvayd")
+theme_override_styles/normal = ExtResource("7_jxgrr")
 icon = ExtResource("6_t4vxq")
 icon_alignment = 1
 expand_icon = true
 
 [node name="Menu" type="Button" parent="Control/MarginContainer/MarginContainer/HBoxContainer"]
+process_mode = 4
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 mouse_default_cursor_shape = 2
+theme_override_styles/focus = ExtResource("6_tvayd")
+theme_override_styles/hover = ExtResource("6_tvayd")
+theme_override_styles/normal = ExtResource("7_jxgrr")
 icon = ExtResource("7_j3g32")
 icon_alignment = 1
 expand_icon = true
@@ -164,5 +187,10 @@ libraries = {
 }
 autoplay = "fade_in"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_rnsrj")
+autoplay = true
+
 [connection signal="button_down" from="Control/MarginContainer/MarginContainer/HBoxContainer/Restart" to="." method="_on_restart_button_down"]
 [connection signal="button_down" from="Control/MarginContainer/MarginContainer/HBoxContainer/Menu" to="." method="_on_menu_button_down"]
+[connection signal="animation_finished" from="Control/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

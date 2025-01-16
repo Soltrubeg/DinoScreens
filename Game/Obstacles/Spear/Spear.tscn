@@ -1,0 +1,124 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqtbkeoebtbcw"]
+
+[ext_resource type="Script" path="res://Game/Obstacles/Spear/Spear.gd" id="1_8cwm1"]
+[ext_resource type="Texture2D" uid="uid://cp6wl17t4kxkm" path="res://Game/Obstacles/Spear/Spear.png" id="1_j77gj"]
+
+[sub_resource type="Animation" id="Animation_vtnvm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Area2D/CollisionShape2D:shape:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 14)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Area2D/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 24.5)]
+}
+
+[sub_resource type="Animation" id="Animation_4kmtw"]
+resource_name = "activate"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 2, 3, 4, 4, 5, 8, 9, 10, 11, 5, 6, 7, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Area2D/CollisionShape2D:shape:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(8, 14), Vector2(8, 15), Vector2(8, 14), Vector2(8, 15), Vector2(8, 14), Vector2(8, 63), Vector2(8, 63), Vector2(8, 63), Vector2(8, 63), Vector2(8, 63), Vector2(8, 63), Vector2(8, 63), Vector2(8, 63), Vector2(8, 63), Vector2(8, 63), Vector2(8, 61), Vector2(8, 43), Vector2(8, 14)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Area2D/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 24.5), Vector2(0.5, 24.5), Vector2(0.5, 24.5), Vector2(0.5, 24.5), Vector2(0.5, 24.5), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0.5, 0.749996), Vector2(0.5, 10.5), Vector2(0.5, 24.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7jrdx"]
+_data = {
+"RESET": SubResource("Animation_vtnvm"),
+"activate": SubResource("Animation_4kmtw")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0ex2"]
+size = Vector2(8, 14)
+
+[node name="Spear" type="CharacterBody2D"]
+position = Vector2(-1, -51)
+scale = Vector2(2, 2)
+motion_mode = 1
+script = ExtResource("1_8cwm1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_j77gj")
+hframes = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_7jrdx")
+}
+speed_scale = 0.6
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 24.5)
+shape = SubResource("RectangleShape2D_g0ex2")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0.5, 25.5)
+scale = Vector2(5, 1)
+target_position = Vector2(0, -70)
+collide_with_areas = true
+collide_with_bodies = false
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

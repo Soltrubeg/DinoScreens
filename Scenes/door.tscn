@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfcabj2n75wn8"]
+[gd_scene load_steps=3 format=3 uid="uid://dfcabj2n75wn8"]
+
+[ext_resource type="Script" path="res://Scenes/door.gd" id="1_c4shi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ne4v7"]
 size = Vector2(0.1, 360)
 
 [node name="Door" type="StaticBody2D"]
 position = Vector2(640, 180)
+script = ExtResource("1_c4shi")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Door"]]
 

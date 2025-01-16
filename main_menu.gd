@@ -9,7 +9,6 @@ func _ready() -> void:
 	update_menu()
 	$MarginContainer/SplitContainer/Buttons/Play.grab_focus()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	tick += delta

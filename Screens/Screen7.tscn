@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=4 uid="uid://csrb6mcx42rlr"]
+
+[ext_resource type="PackedScene" uid="uid://d1ebdc6x8i1rq" path="res://tilemap.tscn" id="1_1kgnp"]
+[ext_resource type="PackedScene" uid="uid://dfcabj2n75wn8" path="res://Scenes/door.tscn" id="2_fkv6m"]
+[ext_resource type="PackedScene" uid="uid://bqtbkeoebtbcw" path="res://Game/Obstacles/Spear/Spear.tscn" id="3_n8ftx"]
+[ext_resource type="PackedScene" uid="uid://dchs4qfy2mxj" path="res://Game/Obstacles/Falling Platform/FallingPlatform.tscn" id="4_qgnv5"]
+[ext_resource type="PackedScene" uid="uid://cnqc62r11bmtg" path="res://Game/Obstacles/Spikes/Spikes.tscn" id="5_4ary6"]
+
+[node name="SampleScreen" type="Node2D"]
+
+[node name="Ground" parent="." instance=ExtResource("1_1kgnp")]
+tile_map_data = PackedByteArray("AAASAAoAAAABAAEAAAARAAoAAAABAAEAAAAQAAoAAAABAAEAAAAPAAoAAAABAAEAAAAEAAoAAAABAAEAAAADAAoAAAABAAEAAAACAAoAAAABAAEAAAABAAoAAAABAAEAAAACAAsAAAABAAIAAAABAAsAAAABAAIAAAAAAAsAAAABAAIAAAAAAAoAAAABAAEAAAAAAAkAAAABAAAAAAABAAkAAAABAAAAAAACAAkAAAABAAAAAAADAAsAAAABAAIAAAADAAkAAAABAAEAAAAEAAsAAAABAAIAAAAEAAkAAAABAAEAAAAPAAsAAAABAAIAAAAPAAkAAAABAAEAAAAQAAsAAAABAAIAAAAQAAkAAAABAAEAAAARAAsAAAABAAIAAAARAAkAAAABAAAAAAASAAsAAAABAAIAAAASAAkAAAABAAAAAAATAAoAAAABAAEAAAATAAsAAAABAAIAAAATAAkAAAABAAAAAAAFAAgAAAACAAEAAAAOAAgAAAAAAAEAAAAFAAcAAAACAAEAAAAGAAYAAAABAAAAAAAOAAcAAAAAAAEAAAANAAYAAAABAAAAAAAOAAYAAAACAAAAAAAFAAYAAAAAAAAAAAAFAAkAAAABAAEAAAAGAAkAAAABAAAAAAAHAAkAAAABAAAAAAAIAAkAAAABAAAAAAAJAAkAAAABAAAAAAAKAAkAAAABAAAAAAALAAkAAAABAAAAAAAMAAkAAAABAAAAAAANAAkAAAABAAAAAAAOAAkAAAABAAEAAAAOAAoAAAABAAEAAAAOAAsAAAABAAIAAAANAAsAAAABAAIAAAANAAoAAAABAAEAAAAMAAoAAAABAAEAAAALAAoAAAABAAEAAAAKAAoAAAABAAEAAAAJAAoAAAABAAEAAAAIAAoAAAABAAEAAAAHAAoAAAABAAEAAAAGAAoAAAABAAEAAAAFAAoAAAABAAEAAAAFAAsAAAABAAIAAAAGAAsAAAABAAIAAAAHAAsAAAABAAIAAAAIAAsAAAABAAIAAAAJAAsAAAABAAIAAAAKAAsAAAABAAIAAAALAAsAAAABAAIAAAAMAAsAAAABAAIAAAAEAAgAAAABAAEAAAAPAAgAAAABAAEAAAAEAAcAAAAAAAAAAAADAAgAAAAAAAAAAAAPAAcAAAACAAAAAAAQAAgAAAACAAAAAAA=")
+
+[node name="Door" parent="." instance=ExtResource("2_fkv6m")]
+
+[node name="Spear" parent="." instance=ExtResource("3_n8ftx")]
+position = Vector2(287, 224)
+
+[node name="Spear2" parent="." instance=ExtResource("3_n8ftx")]
+position = Vector2(319, 224)
+
+[node name="Spear3" parent="." instance=ExtResource("3_n8ftx")]
+position = Vector2(351, 224)
+
+[node name="FallingPlatform" parent="." instance=ExtResource("4_qgnv5")]
+position = Vector2(238, 208)
+
+[node name="FallingPlatform2" parent="." instance=ExtResource("4_qgnv5")]
+position = Vector2(266, 208)
+
+[node name="FallingPlatform6" parent="." instance=ExtResource("4_qgnv5")]
+position = Vector2(374, 208)
+
+[node name="FallingPlatform7" parent="." instance=ExtResource("4_qgnv5")]
+position = Vector2(402, 208)
+
+[node name="Spikes" parent="." instance=ExtResource("5_4ary6")]
+position = Vector2(208, 272)
+rotation = 3.14159
+
+[node name="Spikes2" parent="." instance=ExtResource("5_4ary6")]
+position = Vector2(251, 272)
+rotation = 3.14159
+
+[node name="Spikes3" parent="." instance=ExtResource("5_4ary6")]
+position = Vector2(432, 272)
+rotation = 3.14159
+
+[node name="Spikes4" parent="." instance=ExtResource("5_4ary6")]
+position = Vector2(388, 272)
+rotation = 3.14159

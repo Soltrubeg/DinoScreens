@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
 @export var speed : float = 1
-@export var horizontal : bool = false
+@export_enum("Horizontal", "Vertical") var direction = 0
 
 var tick : float
 
 func _ready() -> void:
 	$StaticBody2D/AnimationPlayer.speed_scale=speed
-	if(horizontal):
+	if(direction==0):
 		$StaticBody2D/AnimationPlayer.play("horizontal")
 	else:
 		$StaticBody2D/AnimationPlayer.play("vertical")

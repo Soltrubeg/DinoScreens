@@ -46,6 +46,7 @@ radius = 13.0
 height = 28.0
 
 [node name="EagleEnemy" type="CharacterBody2D"]
+scale = Vector2(2, 2)
 motion_mode = 1
 script = ExtResource("1_toje6")
 
@@ -60,7 +61,7 @@ libraries = {
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="StaticBody2D"]
+[node name="Area2D" type="Area2D" parent="StaticBody2D" groups=["Enemy", "Stompable"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
 position = Vector2(-3, 4)

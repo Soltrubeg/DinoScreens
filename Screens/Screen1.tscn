@@ -13,3 +13,4 @@ tile_map_data = PackedByteArray("AAABAAoAAAABAAEAAAACAAoAAAABAAEAAAACAAsAAAABAAI
 
 [node name="FloatingPlatform" parent="." instance=ExtResource("2_irmho")]
 position = Vector2(312, 298)
+direction = 1

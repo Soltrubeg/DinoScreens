@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c8kmfiepx388w"]
+[gd_scene load_steps=19 format=3 uid="uid://c8kmfiepx388w"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_tc57q"]
 [ext_resource type="Texture2D" uid="uid://dl0l26thppmqo" path="res://Background/mainmenu.png" id="2_1p6d6"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://d0d47nvl4yqu4" path="res://Buttons/Previous.png" id="4_iml8g"]
 [ext_resource type="FontFile" uid="uid://u0knu7w4xfno" path="res://Fonts/m6x11plus.ttf" id="4_ir4r1"]
 [ext_resource type="Texture2D" uid="uid://du0eo706wukpg" path="res://Buttons/Next.png" id="5_bs53s"]
+[ext_resource type="StyleBox" uid="uid://cg4b0crqmciok" path="res://Buttons/button_hover.tres" id="6_imlus"]
+[ext_resource type="StyleBox" uid="uid://2l746t3o4onl" path="res://Buttons/button.tres" id="7_s3i8r"]
 [ext_resource type="AudioStream" uid="uid://don78gjrmxma7" path="res://Player/Sounds/click.wav" id="8_k5wgu"]
 
 [sub_resource type="Animation" id="Animation_bylen"]
@@ -203,34 +205,56 @@ theme_override_constants/separation = 273
 
 [node name="Buttons" type="VBoxContainer" parent="MarginContainer/SplitContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
 [node name="Play" type="Button" parent="MarginContainer/SplitContainer/Buttons"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(1, 1, 0.25098, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0.25098, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("4_0tepo")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = ExtResource("7_s3i8r")
+theme_override_styles/hover = ExtResource("7_s3i8r")
+theme_override_styles/normal = ExtResource("7_s3i8r")
+action_mode = 0
 text = "Play"
 
 [node name="Highscores" type="Button" parent="MarginContainer/SplitContainer/Buttons"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(1, 1, 0.25098, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0.25098, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_0tepo")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = ExtResource("7_s3i8r")
+theme_override_styles/hover = ExtResource("7_s3i8r")
+theme_override_styles/normal = ExtResource("7_s3i8r")
 text = "Highscores"
 
 [node name="Exit" type="Button" parent="MarginContainer/SplitContainer/Buttons"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(1, 1, 0.25098, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0.25098, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_0tepo")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = ExtResource("7_s3i8r")
+theme_override_styles/hover = ExtResource("7_s3i8r")
+theme_override_styles/normal = ExtResource("7_s3i8r")
 text = "Exit"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/SplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="PrevDino" type="Button" parent="MarginContainer/SplitContainer/HBoxContainer"]
@@ -238,6 +262,10 @@ custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 8
 mouse_default_cursor_shape = 2
+theme_override_styles/focus = ExtResource("6_imlus")
+theme_override_styles/hover = ExtResource("6_imlus")
+theme_override_styles/pressed = ExtResource("6_imlus")
+theme_override_styles/normal = ExtResource("7_s3i8r")
 icon = ExtResource("4_iml8g")
 icon_alignment = 1
 expand_icon = true
@@ -247,6 +275,10 @@ custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 8
 mouse_default_cursor_shape = 2
+theme_override_styles/focus = ExtResource("6_imlus")
+theme_override_styles/hover = ExtResource("6_imlus")
+theme_override_styles/pressed = ExtResource("6_imlus")
+theme_override_styles/normal = ExtResource("7_s3i8r")
 icon = ExtResource("5_bs53s")
 icon_alignment = 1
 expand_icon = true

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://i07ysv5w1dlv"]
+[gd_scene load_steps=7 format=3 uid="uid://i07ysv5w1dlv"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_pqx3y"]
 [ext_resource type="PackedScene" uid="uid://dcukeqrcamu0o" path="res://Player/player.tscn" id="2_wwefe"]
 [ext_resource type="PackedScene" uid="uid://etgrr5ov6tad" path="res://HUD/hud.tscn" id="3_iixto"]
 [ext_resource type="PackedScene" uid="uid://cohkjnwwo4sfy" path="res://Screens/StartScreen.tscn" id="4_mw2gt"]
 [ext_resource type="PackedScene" uid="uid://by5ybyrvhox7r" path="res://Background/background.tscn" id="4_x7b7q"]
+[ext_resource type="AudioStream" uid="uid://k00imap5c71i" path="res://Player/Sounds/confirm.wav" id="6_26bx0"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_pqx3y")
@@ -12,6 +13,7 @@ script = ExtResource("1_pqx3y")
 [node name="HUD" parent="." instance=ExtResource("3_iixto")]
 
 [node name="Background" parent="HUD" instance=ExtResource("4_x7b7q")]
+scroll_ignore_camera_zoom = true
 
 [node name="Start Screen" parent="." instance=ExtResource("4_mw2gt")]
 
@@ -21,6 +23,10 @@ position = Vector2(320, 270)
 [node name="Camera" type="Camera2D" parent="."]
 anchor_mode = 0
 position_smoothing_enabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_26bx0")
+autoplay = true
 
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="pass_through_door" from="Player" to="." method="_on_player_pass_through_door"]
